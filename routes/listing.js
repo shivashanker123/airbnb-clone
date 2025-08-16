@@ -18,6 +18,9 @@ router.route("/new")
         validateListing,
         upload.single("shiva[image]"),
         wrapAsync(listingController.createListing))
+router.get("/search",listingController.search)
+
+router.get("/search/location", wrapAsync(listingController.searchByLocation));
 
 router.get("/",wrapAsync(listingController.index));
 
@@ -35,5 +38,6 @@ router.route("/:id")
             validateListing,
             wrapAsync(listingController.updateListing))
     .delete(isLoggedIn,isOwner,wrapAsync(listingController.destroyListing))
+
 
 module.exports=router;

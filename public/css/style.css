@@ -22,20 +22,33 @@ body{
     color:#222222 !important;
  }
  .f-info-socials i{
-    color: black;
+    /* color: black;
     font-size: 1.2rem;
-    margin-right: 1rem;
+    margin-right: 1rem; */
+    color: #555;
+    font-size: 1.4rem;
+    margin: 0 0.5rem;
+    transition: color 0.3s ease;
 }
+ .f-info-socials i:hover{
+    color: #fe424d;
+    cursor: pointer;
+ }
  .f-info-links{
     gap: 6px;
 }
  .f-info-links a{
+    /* text-decoration: none;
+    color:#222222; */
     text-decoration: none;
-    color:#222222;
+    color: #555;
+    margin: 0 0.5rem;
+    transition: color 0.3s ease;
     
 }
  .f-info-links a:hover{
-    text-decoration: underline;
+    /* text-decoration: underline; */
+    color: #fe424d;
 }
 
  .f-info-links,.f-info-socials,.f-info-brand{
@@ -47,13 +60,21 @@ body{
 }
 
  .f-info{
-    text-align: center;
+    /* text-align: center;
     background-color: #ebebeb;
     height: 8rem;
     display: flex;
     justify-content: center;
     align-items: space-evenly;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;  */
+     background-color: #f7f7f7;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+    color: #555;
 }
 
 /* cards */

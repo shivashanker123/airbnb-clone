@@ -70,25 +70,7 @@ module.exports.destroyListing = async (req,res)=>{
 }
 
 module.exports.createListing = async (req,res,next)=>{
-    // let respose = await geocodingClient
-    // .forwardGeocode({
-    //     query:"New Delhi, India",
-    //     limit:1,
-    // })
-    // .send();
 
-    // console.log(response);
-    // res.send("done! ");
-
-
-    // let url = req.file.path;
-    // let filename = req.file.filename;
-    // let newlisting = new Listing(req.body.shiva);
-    // newlisting.owner = req.user._id;
-    // newlisting.image = { url,filename };
-    // await newlisting.save();
-    // req.flash("success","new Listing created");
-    // res.redirect("/listings");
        try {
 
         // Forward geocoding request to MapTiler API
@@ -130,3 +112,45 @@ module.exports.createListing = async (req,res,next)=>{
         next(err);
     }
 }
+
+module.exports.search = async (req,res,next)=>{
+    const { query } = req.query; // from ?query=hotel
+    let listings;
+    if(query){
+    listings = await Listing.find({
+    $or: [
+      { title: { $regex: query, $options: "i" } },   // search by title
+      { location: { $regex: query, $options: "i" } }, // search by location
+      { description: { $regex: query, $options: "i" } },
+      { category: { $regex: query, $options: "i" } }  // search by category
+    ]
+  });}else{
+    listings= await Listing.find({});
+  }
+
+
+  res.render("listing/index.ejs", { allListing: listings });
+
+}
+module.exports.searchByLocation = async (req, res) => {
+    const { lng, lat, radius = 10 } = req.query; // default radius = 10km
+
+    if (!lng || !lat) {
+        req.flash("error", "Please provide a location to search!");
+        return res.redirect("/listings");
+    }
+
+    const listings = await Listing.find({
+        geometry: {
+            $near: {
+                $geometry: {
+                    type: "Point",
+                    coordinates: [parseFloat(lng), parseFloat(lat)]
+                },
+                $maxDistance: radius * 1000 // convert km → meters
+            }
+        }
+    });
+
+    res.render("listings/index", { allListing: listings });
+};

@@ -80,6 +80,15 @@
             </div>
         </div>
     </div>
+
+    <% if (allListing.length === 0) { %>
+  <div class="text-center my-5">
+    <h3>No results found 😔</h3>
+    <p>Try searching with a different keyword.</p>
+    <a href="/listings" class="btn btn-primary mt-3">Back to Explore</a>
+  </div>
+<% } else { %>
+
     <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1">
     <%  for(let list of allListing) { %>
         <a href="/listings/<%= list.id %>" class="Listing-link">
@@ -103,16 +112,10 @@
 
     <%  } %>
     </div>
-
+    <% } %>
 </body>
 <script>
     let taxSwitch = document.getElementById("switchCheckDefault");
-    // for(tax of taxInfo){
-    //     tax.addEventListener("click",
-    //         console.log("clicked");
-    //  
-    // }
-
     taxSwitch.addEventListener("click",()=>{
         let taxInfo = document.getElementsByClassName("tax-info");
         for(info of taxInfo){
