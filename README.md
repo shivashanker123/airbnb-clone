@@ -25,7 +25,9 @@ Other Tools: Git, GitHub, Postman
 
 📸 Screenshots (Optional)
 
-![Homepage Screenshot](./screenshots/home.png)
+![Homepage](./screenshots/homepage.jpg)
+![Login Page](./screenshots/login.jpg)
+![Booking Page](./screenshots/create.jpg)
 
 ⚙️ Installation & Setup
 
