@@ -1,7 +1,8 @@
-🏠 Airbnb Clone
+# 🏠 Airbnb Clone  
 
-A full-stack web application inspired by Airbnb, built using the MERN stack (MongoDB, Express.js, React, Node.js).
-This project was developed as part of my learning journey in the Apna College Delta Batch to practice and apply full-stack development concepts.
+A full-stack web application inspired by Airbnb, built using the MERN stack.  
+
+🔗 **Live Demo:** [Click Here](https://airbnb-clone-0tl8.onrender.com/listings)
 
 🚀 Features
 
